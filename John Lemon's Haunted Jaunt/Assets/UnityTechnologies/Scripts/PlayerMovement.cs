@@ -27,11 +27,10 @@ public class PlayerMovement : MonoBehaviour
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
 
-        //Holding shift multiplies horizontal & vertical movement by 1.5
+        //Holding shift multiplies m_Movement by 2
         if (Input.GetKey("left shift"))
         {
-            m_Movement.x *= 2;
-            m_Movement.z *= 2;
+            m_Movement *= 2.0f;
         }
 
             bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
