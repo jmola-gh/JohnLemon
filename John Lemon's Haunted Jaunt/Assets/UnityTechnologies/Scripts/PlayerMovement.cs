@@ -27,7 +27,14 @@ public class PlayerMovement : MonoBehaviour
         m_Movement.Set(horizontal, 0f, vertical);
         m_Movement.Normalize();
 
-        bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
+        //Holding shift multiplies horizontal & vertical movement by 1.5
+        if (Input.GetKey("left shift"))
+        {
+            m_Movement.x *= 2;
+            m_Movement.z *= 2;
+        }
+
+            bool hasHorizontalInput = !Mathf.Approximately(horizontal, 0f);
         bool hasVerticalInput = !Mathf.Approximately(vertical, 0f);
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool("IsWalking", isWalking);
